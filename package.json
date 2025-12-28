@@ -1,16 +1,28 @@
-
-
-
- {
-  "private": true,
+{
+  "name": "my-nitro-app",
   "version": "2.1.3",
-  "packageManager": "pnpm@9.15.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "generate": "prisma generate",
-    "prepare": "nitro prepare",
-    "build": "pnpm run generate && nitro build",
     "dev": "nitro dev",
-    "preview": "node .output/server/index.mjs"
+    "build": "npx prisma generate && nitro build",
+    "prepare": "nitro prepare",
+    "start": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "cheerio": "^1.1.2",
+    "dotenv": "^16.6.1",
+    "jsonwebtoken": "^9.0.3",
+    "magicast": "^0.3.5",
+    "prom-client": "^15.1.3",
+    "pg": "^8.16.3",
+    "tmdb-ts": "^2.0.3",
+    "trakt.tv": "^8.2.0",
+    "tweetnacl": "^1.0.3",
+    "whatwg-url": "^14.2.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.50.1",
@@ -22,18 +34,11 @@
     "prettier": "^3.7.4",
     "prisma": "^7.2.0"
   },
-  "dependencies": {
-    "@prisma/adapter-pg": "^7.2.0",
-    "@prisma/client": "^7.2.0",
-    "cheerio": "^1.1.2",
-    "dotenv": "^16.6.1",
-    "jsonwebtoken": "^9.0.3",
-    "magicast": "^0.3.5",
-    "prom-client": "^15.1.3",
-    "tmdb-ts": "^2.0.3",
-    "trakt.tv": "^8.2.0",
-    "tweetnacl": "^1.0.3",
-    "whatwg-url": "^14.2.0",
-    "zod": "^3.25.76"
+  "pnpm": {
+    "peerDependenciesMeta": {
+      "pg-native": {
+        "optional": true
+      }
+    }
   }
- }
+}
